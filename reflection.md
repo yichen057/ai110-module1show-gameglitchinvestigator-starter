@@ -76,3 +76,5 @@ The one thing I would do differently next time is to verify the full scope of an
 
 AI-generated code looks polished and confident, but this project showed me that confidence has nothing to do with correctness. The AI produced code that compiled, ran, and even looked reasonable, yet it was broken in seven different ways. The real skill is not prompting the AI to write code but knowing the domain well enough to catch what the AI missed.
 
+Note on Commit Identity: Some early commits might appear under the name 'mjaow' due to a misconfiguration of the local Git global settings on a shared computer. I have since corrected this using git config, and all work within this yichen057 repository was performed and investigated by me (Yichen Liu) as part of the AI110 Week 3 Show assignment.
+
