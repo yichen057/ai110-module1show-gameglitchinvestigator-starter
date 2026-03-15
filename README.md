@@ -25,13 +25,30 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+**Game purpose:** A number guessing game where the player tries to guess a secret number within a limited number of attempts. After each guess, the game gives a "Too High" or "Too Low" hint to guide the player toward the correct answer.
+
+**Bugs found (7 total):**
+- Bug 1: Attempt counter initialized to `1` instead of `0`, showing wrong count on page load
+- Bug 2: Hint messages in `check_guess` were inverted, so "Go HIGHER!" showed when the guess was too high
+- Bug 3: "New Game" only reset `attempts` and `secret`, leaving `status`/`score`/`history` stale
+- Bug 4: `Attempts left` display rendered before the increment, always one step behind
+- Bug 5: Developer Debug Info also rendered before increment, out of sync with `Attempts left`
+- Bug 6: Test assertions expected a plain string but `check_guess` returns a `(outcome, message)` tuple
+- Bug 7: `pytest` raised `ModuleNotFoundError` because `logic_utils` was not on `sys.path`
+
+**Fixes applied:**
+- Moved all four core functions into `logic_utils.py` and imported them in `app.py`
+- Corrected the swapped hint messages in `check_guess`
+- Fixed initial `attempts = 0` and added full session state reset in `if new_game:`
+- Used `st.empty()` placeholders for both the info box and debug expander so they render after the increment
+- Added `conftest.py` at the project root to fix pytest imports
+- Updated tests to unpack the `(outcome, message)` tuple and added 6 new regression tests covering `parse_guess` and `update_score`
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- [x] [Insert a screenshot of your fixed, winning game here]
+
+![image-20260315011255186](assets/image-20260315011255186.png)
 
 ## 🚀 Stretch Features
 
